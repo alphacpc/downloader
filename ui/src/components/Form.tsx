@@ -1,13 +1,19 @@
-import React, {useState} from 'react'
+"use client"
+import React, { ChangeEvent} from 'react'
+// import axios from "axios"
 
 const FormDownload = () => {
 
-
-    const handleChangeInput = (event : React.ChangeEvent<HTMLInputElement>) => {
-        const {value, name} = event.target
-        console.log(value + " " + name)
+    const handleChangeInput = async(e: ChangeEvent<HTMLInputElement>) => {
+        const {value, name} = e.target
+        
+        if(value.startsWith("https://www.youtube")){
+            // const response = await axios.get('https://api.example.com/data');       
+    
+        }else{
+            console.log("URL invalide")
+        }
     }
-
 
     return (
         <div>
@@ -16,7 +22,7 @@ const FormDownload = () => {
                 <input type="text" name="link" 
                     id="link" placeholder="Collez ici le lien de votre vidéo" 
                     className="py-3 px-4 text-lg text-slate-800 rounded outline-none w-1/3"
-                    onChange={ (e) => handleChangeInput(e) }
+                    onChange={ handleChangeInput }
                 />
             </form>
         </div>

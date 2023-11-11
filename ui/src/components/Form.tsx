@@ -1,18 +1,15 @@
 "use client"
 import React, { ChangeEvent} from 'react'
-// import axios from "axios"
+import axios from "axios"
 
 const FormDownload = () => {
 
     const handleChangeInput = async(e: ChangeEvent<HTMLInputElement>) => {
         const {value, name} = e.target
         
-        if(value.startsWith("https://www.youtube")){
-            // const response = await axios.get('https://api.example.com/data');       
-    
-        }else{
-            console.log("URL invalide")
-        }
+        const res = await(await axios.get("http://127.0.0.1:5000/")).data
+
+        console.log(res)
     }
 
     return (

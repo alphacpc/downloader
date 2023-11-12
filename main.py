@@ -11,7 +11,7 @@ CORS(app)
 @app.route('/')
 def index():
     try:
-        yt = YouTube('https://www.youtube.com/watch?v=0tuI1pIgY7w')
+        yt = YouTube('https://www.youtube.com/watch?v=IYk6sCMqlvQ&pp=ygUOdGhvbWFzIHNhbmthcmE%3D')
 
         video_info = {
             'title': yt.title,

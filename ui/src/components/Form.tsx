@@ -38,19 +38,26 @@ const FormDownload = () => {
       }, []);
 
     return (
-        <div>
-            <h1 className="text-4xl text-center">Téléchargement de vidéos <span className="text-orange-600 font-bold">YouTube</span></h1>
-            <form className=" my-12 py-4 flex justify-center">
+        <div className="flex flex-col">
+            <h1 className="text-4xl text-center line-">Téléchargement de vidéos <span className="text-orange-600 font-bold">YouTube</span></h1>
+            <form className=" my-8 py-5 flex flex-col justify-center items-center">
+                <div className="flex items-center flex-row-reverse text-lg mb-4">
+                    <label htmlFor="playlist">Oui, je veux télécharger une playlist</label>
+                    <input type="checkbox" name="playlist" id="playlist" className='mr-2' />
+                </div>
+
                 <input type="text" name="link" 
                     id="link" placeholder="Collez ici le lien de votre vidéo" 
-                    className="py-3 px-4 text-lg text-slate-800 rounded outline-none w-1/3"
+                    className="py-3 px-4 text-lg text-slate-800 rounded outline-none lg:w-[30rem] sm:w-full"
                     onChange={ handleChangeInput }
                 />
             </form>
 
+            {/* Taille de l'écran (sm, md, lg, xl): */}
+
             <div className='flex justify-around flex-wrap'>
                 {videos.map((video, index) => (
-                    <div key={index} className="w-1/6 m-1 mb-12 shadow-lg rounded">
+                    <div key={index} className="m-1 mb-12 shadow-lg rounded lg:w-[20rem] md:w-[20rem] sm:w-full">
                         <img src={info["image"]} alt={info["title"]}/>
                         <div className="flex items-center bg-white justify-between py-4 px-2">
                             <span className="font-bol">{video?.mime_type.replace("/"," ").toUpperCase()}</span>

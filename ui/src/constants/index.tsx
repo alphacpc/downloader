@@ -1,8 +1,8 @@
 // NAVIGATION
 export const NAV_LINKS = [
-    { href: '/', key: 'home', label: 'Home' },
-    { href: '/', key: 'how_hilink_work', label: 'How Hilink Work?' },
-    { href: '/', key: 'contact_us', label: 'Contact Us' },
+    { href: '/', key: 'home', label: 'Accueil' },
+    { href: '/', key: 'how_dieulko_work', label: 'Comment fonctionne JIELKO?' },
+    { href: '/', key: 'contact_us', label: 'Contactez Nous' },
   ];
   
   // CAMP SECTION

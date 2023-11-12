@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className="container mx-[10%]">
+    <div className="mx-[10%] md:mx-[5%]">
       <FormDownload/>
     </div>
   )

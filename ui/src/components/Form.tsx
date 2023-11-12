@@ -2,6 +2,8 @@
 import React, {useState, ChangeEvent, useEffect} from 'react'
 import axios from "axios"
 import { VideoInfo, StreamInfo } from "../constants/types"
+import Empty from './Empty'
+
 
 const FormDownload = () => {
 
@@ -16,26 +18,26 @@ const FormDownload = () => {
         
     }
 
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get("http://127.0.0.1:5000/");
-            console.log('API Response:', response.data); // Ajoutez ce log
-            await setVideos(response.data["streams"]);
-            await setInfo({
-                "title": response.data["title"],
-                "image": response.data["thumbnail_url"]
-            })
-            console.log(typeof(videos))
-            console.log(response.data["streams"])
-            console.log('Video Object Keys:', Object.keys(videos));
-          } catch (error) {
-            console.error('Erreur lors de la récupération des données :', error);
-          }
-        };
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //       try {
+    //         const response = await axios.get("http://127.0.0.1:5000/");
+    //         console.log('API Response:', response.data); // Ajoutez ce log
+    //         await setVideos(response.data["streams"]);
+    //         await setInfo({
+    //             "title": response.data["title"],
+    //             "image": response.data["thumbnail_url"]
+    //         })
+    //         console.log(typeof(videos))
+    //         console.log(response.data["streams"])
+    //         console.log('Video Object Keys:', Object.keys(videos));
+    //       } catch (error) {
+    //         console.error('Erreur lors de la récupération des données :', error);
+    //       }
+    //     };
       
-        fetchData();
-      }, []);
+    //     fetchData();
+    //   }, []);
 
     return (
         <div className="flex flex-col">
@@ -56,7 +58,7 @@ const FormDownload = () => {
             {/* Taille de l'écran (sm, md, lg, xl): */}
 
             <div className='flex justify-around flex-wrap'>
-                {videos.map((video, index) => (
+                { videos.length > 0 ? videos.map((video, index) => (
                     <div key={index} className="m-1 mb-12 shadow-lg rounded lg:w-[20rem] md:w-[20rem] sm:w-full">
                         <img src={info["image"]} alt={info["title"]}/>
                         <div className="flex items-center bg-white justify-between py-4 px-2">
@@ -65,7 +67,9 @@ const FormDownload = () => {
                             <button className="bg-green-500 text-white rounded-md text-sm p-1 px-2">Télécharger</button>
                         </div>
                     </div>
-                ))}
+                )) : <>
+                    <Empty/>
+                </>}
             </div>
 
         </div>

@@ -18,26 +18,26 @@ const FormDownload = () => {
         
     }
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //       try {
-    //         const response = await axios.get("http://127.0.0.1:5000/");
-    //         console.log('API Response:', response.data); // Ajoutez ce log
-    //         await setVideos(response.data["streams"]);
-    //         await setInfo({
-    //             "title": response.data["title"],
-    //             "image": response.data["thumbnail_url"]
-    //         })
-    //         console.log(typeof(videos))
-    //         console.log(response.data["streams"])
-    //         console.log('Video Object Keys:', Object.keys(videos));
-    //       } catch (error) {
-    //         console.error('Erreur lors de la récupération des données :', error);
-    //       }
-    //     };
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get("http://127.0.0.1:5000/");
+            console.log('API Response:', response.data); // Ajoutez ce log
+            await setVideos(response.data["streams"]);
+            await setInfo({
+                "title": response.data["title"],
+                "image": response.data["thumbnail_url"]
+            })
+            console.log(typeof(videos))
+            console.log(response.data["streams"])
+            console.log('Video Object Keys:', Object.keys(videos));
+          } catch (error) {
+            console.error('Erreur lors de la récupération des données :', error);
+          }
+        };
       
-    //     fetchData();
-    //   }, []);
+        fetchData();
+      }, []);
 
     return (
         <div className="flex flex-col">

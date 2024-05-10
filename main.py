@@ -1,8 +1,10 @@
 from pprint import pprint
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from pytube import YouTube
 from pytube.exceptions import VideoUnavailable
 from flask_cors import CORS
+from datetime import datetime
+
 
 
 app = Flask(__name__)
@@ -41,6 +43,25 @@ def index():
 
     except Exception as e:
         print(f"Error: An unexpected error occurred - {e}")
+
+
+
+@app.route('/upload', methods=['POST'])
+def upload_audio():
+    try:
+        maintenant = datetime.now()
+        nom_fichier_original = "audio"
+
+        audio_file = request.files['audio']
+        # Vous pouvez traiter le fichier audio ici (sauvegarde, analyse, etc.)
+        # Par exemple, pour sauvegarder le fichier sur le serveur :
+        audio_file.save(f"./data/audio_{maintenant}.mp3")
+        return 'Audio upload successful!', 200
+    
+    
+    except Exception as e:
+        print(f'Error uploading audio: {e}')
+        return 'Error uploading audio', 500
 
 
 if __name__ == '__main__':

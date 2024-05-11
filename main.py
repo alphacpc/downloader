@@ -11,8 +11,11 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/<url>', methods=['POST'])
-def index(url):
+@app.route('/')
+def index():
+    url = request.args.get('title')
+    print('testing')
+    print(url)
     try:
         print('testing')
         print(url)

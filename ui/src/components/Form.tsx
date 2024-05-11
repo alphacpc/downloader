@@ -13,7 +13,7 @@ const FormDownload = () => {
     const fetchData = async () => {
         console.log(url)
         try {
-          const response = await axios.get(`http://127.0.0.1:5000/${url}`);
+          const response = await axios.get(`http://127.0.0.1:5000/?title=${url}`);
           console.log('API Response:', response.data); // Ajoutez ce log
           await setVideos(response.data["streams"]);
           await setInfo({
@@ -34,7 +34,8 @@ const FormDownload = () => {
     }
 
     useEffect(() => {
-        fetchData();
+        url && fetchData();
+        !url && setVideos([])
       }, [url]);
 
     return (

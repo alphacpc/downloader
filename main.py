@@ -10,9 +10,23 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
+yt = None 
+
+@app.route("/download")
+def load():
+    global yt
+    itag = request.args.get("itag")
+    print(itag)
+    
+    if yt is not None:  # Vérifiez si yt a été correctement initialisé
+        yt.streams.get_by_itag(int(itag)).download()
+        return "Téléchargement terminé."
+    else:
+        return "Erreur: Aucune vidéo n'est actuellement chargée."
 
 @app.route('/')
 def index():
+    global yt
     url = request.args.get('title')
     try:
         yt = YouTube(url)
@@ -35,7 +49,7 @@ def index():
         }
 
         pprint(video_info)
-
+        tab_videos = video_info
         return jsonify(video_info)
 
     except VideoUnavailable as e:

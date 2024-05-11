@@ -35,7 +35,8 @@ const FormDownload = () => {
 
     const handleDownloadVideo = async(e: ChangeEvent<HTMLInputElement>) => {
         console.log(e.target)
-        //await axios.get(`http://127.0.0.1:5000/download?itag=${e.target.dataset.itag}`);
+        const res = await axios.get(`http://127.0.0.1:5000/download?itag=${e.target.dataset.itag}`);
+        console.log(res);
     }
 
     useEffect(() => {

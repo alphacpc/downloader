@@ -6,44 +6,41 @@ import Empty from './Empty'
 
 
 const FormDownload = () => {
-
+    const [url ,setUrl] = useState('')
     const [videos, setVideos] = useState<StreamInfo[]>([]);
     const [info, setInfo] = useState({title:null, image:null})
     
+    const fetchData = async () => {
+        console.log(url)
+        try {
+          const response = await axios.get(`http://127.0.0.1:5000/${url}`);
+          console.log('API Response:', response.data); // Ajoutez ce log
+          await setVideos(response.data["streams"]);
+          await setInfo({
+              "title": response.data["title"],
+              "image": response.data["thumbnail_url"]
+          })
+          console.log(typeof(videos))
+          console.log(response.data["streams"])
+          console.log('Video Object Keys:', Object.keys(videos));
+        } catch (error) {
+          console.error('Erreur lors de la récupération des données :', error);
+        }
+    };
 
     const handleChangeInput = async(e: ChangeEvent<HTMLInputElement>) => {
         const {value, name} = e.target
-        console.log(value + " " + name)
-        // const res = await(await axios.get("http://127.0.0.1:5000/")).data
-        // setVideos(res)
-        
+        setUrl(value)
     }
 
     useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get("http://127.0.0.1:5000/");
-            console.log('API Response:', response.data); // Ajoutez ce log
-            await setVideos(response.data["streams"]);
-            await setInfo({
-                "title": response.data["title"],
-                "image": response.data["thumbnail_url"]
-            })
-            console.log(typeof(videos))
-            console.log(response.data["streams"])
-            console.log('Video Object Keys:', Object.keys(videos));
-          } catch (error) {
-            console.error('Erreur lors de la récupération des données :', error);
-          }
-        };
-      
         fetchData();
-      }, []);
+      }, [url]);
 
     return (
         <div className="flex flex-col">
             <h1 className="text-4xl text-center line-">Téléchargement de vidéos <span className="text-orange-600 font-bold">YouTube</span></h1>
-            <form className=" my-8 py-5 flex flex-col justify-center items-center">
+            <form className=" my-8 py-5 flex flex-col justify-center items-center" method='post'>
                 <div className="flex items-center flex-row-reverse text-lg mb-4">
                     <label htmlFor="playlist">Oui, je veux télécharger une playlist</label>
                     <input type="checkbox" name="playlist" id="playlist" className='mr-2' />

@@ -52,7 +52,6 @@ const FormDownload = () => {
             <form className=" my-8 py-5 flex flex-col justify-center items-center" method='post'>
                 <div className="flex items-center flex-row-reverse text-lg mb-4">
                     <label htmlFor="playlist">Oui, je veux télécharger une playlist</label>
-                    <input type="checkbox" name="playlist" id="playlist" className='mr-2' />
                 </div>
 
                 <input type="text" name="link" 
@@ -63,9 +62,9 @@ const FormDownload = () => {
             </form>
 
             {/* Taille de l'écran (sm, md, lg, xl): */}
-            <div className='flex justify-around flex-wrap'>
+            <div className='flex div-videos flex-wrap'>
                 { videos && videos.length > 0 ? videos.map((video, index) => (
-                    <div key={index} className="m-1 mb-12 shadow-lg rounded lg:w-[20rem] md:w-[20rem] sm:w-full">
+                    <div key={index} className="mb-12 div-item-video shadow-lg rounded lg:w-[20rem] md:w-[20rem] sm:w-full">
                         <img src={info["image"]} alt={info["title"]}/>
                         <div className="flex items-center bg-white justify-between py-4 px-2">
                             <span className="font-bol">{video?.mime_type.replace("/"," ").toUpperCase()}</span>

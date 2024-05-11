@@ -14,3 +14,11 @@ body {
   font-family: Inter;
   background: #E0F4FF;
 }
+
+.div-videos .div-item-video{
+  margin-right: 4% !important;
+}
+
+.div-videos .div-item-video:nth-child(5n){
+  margin-right: 0px !important;
+}

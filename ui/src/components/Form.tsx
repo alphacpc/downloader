@@ -13,8 +13,9 @@ const FormDownload = () => {
 
     const handleChangeInput = async(e: ChangeEvent<HTMLInputElement>) => {
         const {value, name} = e.target
-        const res = await(await axios.get("http://127.0.0.1:5000/")).data
-        setVideos(res)
+        console.log(value + " " + name)
+        // const res = await(await axios.get("http://127.0.0.1:5000/")).data
+        // setVideos(res)
         
     }
 

@@ -1,6 +1,7 @@
 "use client"
 import React, {useState, ChangeEvent, useEffect} from 'react'
 import axios from "axios"
+import Link from 'next/link'
 import { VideoInfo, StreamInfo } from "../constants/types"
 import Empty from './Empty'
 
@@ -32,6 +33,7 @@ const FormDownload = () => {
         const {value, name} = e.target
         setUrl(value)
     }
+
 
     const handleDownloadVideo = async(e: ChangeEvent<HTMLInputElement>) => {
         console.log(e.target)
@@ -68,7 +70,7 @@ const FormDownload = () => {
                         <div className="flex items-center bg-white justify-between py-4 px-2">
                             <span className="font-bol">{video?.mime_type.replace("/"," ").toUpperCase()}</span>
                             <span className="text-orange-600 font-bold">{video?.resolution}</span>
-                            <button data-itag={video?.itag} onClick={handleDownloadVideo} className="bg-green-500 text-white rounded-md text-sm p-1 px-2">Télécharger</button>
+                            <Link download={true} data-itag={video?.itag} href={`http://127.0.0.1:5000/download?itag=${video?.itag}`} className="bg-green-500 text-white rounded-md text-sm p-1 px-2">Télécharger</Link>
                         </div>
                     </div>
                 )) : <>

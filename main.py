@@ -1,5 +1,5 @@
 from pprint import pprint
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file
 from pytube import YouTube
 from pytube.exceptions import VideoUnavailable
 from flask_cors import CORS
@@ -8,19 +8,23 @@ from datetime import datetime
 
 
 app = Flask(__name__)
+yt = None 
+
 CORS(app)
 
-yt = None 
 
 @app.route("/download")
 def load():
     global yt
     itag = request.args.get("itag")
     print(itag)
+    print(yt)
     
-    if yt is not None:  # Vérifiez si yt a été correctement initialisé
-        yt.streams.get_by_itag(int(itag)).download()
-        return "Téléchargement terminé."
+    if yt is not None :
+        video = yt.streams.get_by_itag(int(itag))
+        video_file = f"{yt.title}.mp4"
+        video.download(filename=video_file)
+        return send_file(video_file, as_attachment=True)
     else:
         return "Erreur: Aucune vidéo n'est actuellement chargée."
 

@@ -1,9 +1,9 @@
-"use client"
-import React, {useState, ChangeEvent, useEffect} from 'react'
-import axios from "axios"
-import Link from 'next/link'
-import { VideoInfo, StreamInfo } from "../constants/types"
-import Empty from './Empty'
+"use client";
+import axios from "axios";
+import Empty from './Empty';
+import Link from "next/link";
+import { VideoInfo, StreamInfo } from "../constants/types";
+import React, {useState, ChangeEvent, useEffect} from "react";
 
 
 const FormDownload = () => {
@@ -12,18 +12,13 @@ const FormDownload = () => {
     const [info, setInfo] = useState({title:null, image:null})
     
     const fetchData = async () => {
-        console.log(url)
         try {
           const response = await axios.get(`http://127.0.0.1:5000/?title=${url}`);
-          console.log('API Response:', response.data); // Ajoutez ce log
           await setVideos(response.data["streams"]);
           await setInfo({
               "title": response.data["title"],
               "image": response.data["thumbnail_url"]
           })
-          console.log(typeof(videos))
-          console.log(response.data["streams"])
-          console.log('Video Object Keys:', Object.keys(videos));
         } catch (error) {
           console.error('Erreur lors de la récupération des données :', error);
         }
@@ -35,23 +30,19 @@ const FormDownload = () => {
     }
 
 
-    const handleDownloadVideo = async(e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target)
-        const res = await axios.get(`http://127.0.0.1:5000/download?itag=${e.target.dataset.itag}`);
-        console.log(res);
-    }
-
     useEffect(() => {
         url && fetchData();
         !url && setVideos([])
-      }, [url]);
+      }, 
+    [url]);
+
 
     return (
         <div className="flex flex-col">
             <h1 className="text-4xl text-center line-">Téléchargement de vidéos <span className="text-orange-600 font-bold">YouTube</span></h1>
             <form className=" my-8 py-5 flex flex-col justify-center items-center" method='post'>
                 <div className="flex items-center flex-row-reverse text-lg mb-4">
-                    <label htmlFor="playlist">Oui, je veux télécharger une playlist</label>
+                    <p className='italic'>Faites de chaque lien YouTube une opportunité de téléchargement. </p>
                 </div>
 
                 <input type="text" name="link" 
@@ -81,4 +72,4 @@ const FormDownload = () => {
     )
 }
 
-export default FormDownload
+export default FormDownload;

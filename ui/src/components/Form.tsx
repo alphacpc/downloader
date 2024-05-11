@@ -53,6 +53,14 @@ const FormDownload = () => {
             </form>
 
             {/* Taille de l'écran (sm, md, lg, xl): */}
+            {
+                videos && videos.length > 0 && <div className="flex items-center py-8 text-xl">
+                    <span className="mr-2">Résultat : </span>
+                    <h2 className="font-bold text-2xl text-orange-600 mr-2"> {info?.title}</h2>
+                    <span className="mr-2"> - Nombre de vidéos trouvées : </span>
+                    <h2 className="font-bold text-2xl text-green-500">{videos?.length}</h2>
+                </div>
+            }
             <div className='flex div-videos flex-wrap'>
                 { videos && videos.length > 0 ? videos.map((video, index) => (
                     <div key={index} className="mb-12 div-item-video shadow-lg rounded lg:w-[20rem] md:w-[20rem] sm:w-full">

@@ -14,11 +14,7 @@ CORS(app)
 @app.route('/')
 def index():
     url = request.args.get('title')
-    print('testing')
-    print(url)
     try:
-        print('testing')
-        print(url)
         yt = YouTube(url)
 
         video_info = {
@@ -42,13 +38,13 @@ def index():
 
         return jsonify(video_info)
 
-        # return yt.streams
-
     except VideoUnavailable as e:
         print(f"Error: Video is unavailable - {e}")
+        return jsonify({'error': 'Video is unavailable'})
 
     except Exception as e:
         print(f"Error: An unexpected error occurred - {e}")
+        return jsonify({'error': 'An unexpected error occurred'})
 
 
 

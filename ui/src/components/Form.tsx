@@ -33,6 +33,11 @@ const FormDownload = () => {
         setUrl(value)
     }
 
+    const handleDownloadVideo = async(e: ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target)
+        //await axios.get(`http://127.0.0.1:5000/download?itag=${e.target.dataset.itag}`);
+    }
+
     useEffect(() => {
         url && fetchData();
         !url && setVideos([])
@@ -55,15 +60,14 @@ const FormDownload = () => {
             </form>
 
             {/* Taille de l'écran (sm, md, lg, xl): */}
-
             <div className='flex justify-around flex-wrap'>
-                { videos.length > 0 ? videos.map((video, index) => (
+                { videos && videos.length > 0 ? videos.map((video, index) => (
                     <div key={index} className="m-1 mb-12 shadow-lg rounded lg:w-[20rem] md:w-[20rem] sm:w-full">
                         <img src={info["image"]} alt={info["title"]}/>
                         <div className="flex items-center bg-white justify-between py-4 px-2">
                             <span className="font-bol">{video?.mime_type.replace("/"," ").toUpperCase()}</span>
                             <span className="text-orange-600 font-bold">{video?.resolution}</span>
-                            <button className="bg-green-500 text-white rounded-md text-sm p-1 px-2">Télécharger</button>
+                            <button data-itag={video?.itag} onClick={handleDownloadVideo} className="bg-green-500 text-white rounded-md text-sm p-1 px-2">Télécharger</button>
                         </div>
                     </div>
                 )) : <>

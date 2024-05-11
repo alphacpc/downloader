@@ -22,3 +22,18 @@ body {
 .div-videos .div-item-video:nth-child(5n){
   margin-right: 0px !important;
 }
+
+.ul-list li::before{
+  background-color: orangered;
+  border-radius: 50%;
+  position: relative;
+  padding: 5px 5px;
+  content: '';
+  margin-right: 10px;
+  display: inline-block;
+  align-items: center;
+}
+
+.ul-list li{
+  margin: 20px 0;
+}

@@ -26,7 +26,9 @@ def load():
         video.download(filename=video_file)
         return send_file(video_file, as_attachment=True)
     else:
-        return "Erreur: Aucune vidéo n'est actuellement chargée."
+        return None
+        
+
 
 @app.route('/')
 def index():

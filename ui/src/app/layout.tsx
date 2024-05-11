@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="fr">
       <body>
         <Navbar/>
-          <main className="relative">
+          <main className="relative mx-[10%] md:mx-[5%]">
             {children}
           </main>
         <Footer/>

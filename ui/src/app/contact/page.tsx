@@ -10,7 +10,7 @@ export default function Page() {
         </div>
 
         <div className="border-2 w-[12vw] m-4 flex flex-col justify-around items-center py-10 rounded border-emerald-600">
-          <span>BUILDING</span>
+          <span>LOCALISATION</span>
           <span className="mt-5">Sénégal, Dakar</span>
         </div>
 

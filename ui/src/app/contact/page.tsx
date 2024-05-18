@@ -25,7 +25,19 @@ export default function Page() {
         </div>
 
       </div>
-      <div className="bg-green-200 p-3 flex-1"></div>
+      <div className="bg-green-200 p-3 flex-1">
+        <form className="flex flex-wrap flex-col items-start">
+          <input placeholder="Nom complet" className="w-full"/>
+          <input placeholder="Email"/>
+          <input placeholder="Objet"/>
+          <textarea rows={5} placeholder="Message"/>
+          <div>
+            <input type="checkbox"/>
+            <label>S'abonner aux newsletter</label>
+          </div>
+          <button>Envoyer</button>
+        </form>
+      </div>
     </div>
   </div>
 }

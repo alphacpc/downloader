@@ -14,6 +14,7 @@ TER_CHECKPOINT = [ "Dakar", "Colobane", "Hann", "Beaux Maraîchers",
 "Pikine", "Thiaroye", "Yeumbeul", "Keur Massar", 
 "Keur Mbaye Fall", "Rufisque", "Bargny", "Diamniadio"]
 
+
 while True:
         ter_pay = random.choice(TER_PAY)
         ter_zone = random.choice(TER_ZONE)

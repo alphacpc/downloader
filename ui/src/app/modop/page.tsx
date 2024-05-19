@@ -1,6 +1,7 @@
 import photo1 from "../../assets/images/photo1.png";
 import photo2 from "../../assets/images/photo2.png";
 import photo3 from "../../assets/images/photo3.png";
+import Image from "next/image"
 
 
 export default function Page() {
@@ -26,14 +27,15 @@ export default function Page() {
                         <p>L'utilisation de l'application est simple et intuitive : </p>
                         <ul className={ul}>
                                 <li>Copiez le lien de la vidéo YouTube que vous souhaitez télécharger.</li>
-                                <img src={photo1} alt="jielko-photo1" />
+                                <Image src={photo1} alt="jielko-photo1" />
+                                
 
                                 <li>Allez à jielko.app</li>
                                 <li>Collez le lien dans la zone prévue à cet effet et attendez la récupération des videos.</li>
-                                <img src={photo2} alt="jielko-photo2" />
+                                <Image src={photo2} alt="jielko-photo2" />
 
                                 <li>Une fois les videos affichées vous pouvez procéder au téléchargement.</li>
-                                <img src={photo3} alt="jielko-photo3" />
+                                <Image src={photo3} alt="jielko-photo3" />
 
                         </ul>
                 </div>

@@ -8,7 +8,6 @@ const Navbar = () => {
   return (
     <nav className="flex justify-around max-container padding-container relative z-30 py-5 border-b-2 mb-12">
         <Link href="/">
-            {/* <Image src="../assets/images/DakarScript.png" alt="logo" width={74} height={29 }/> */}
             <p className="flex justify-center items-center font-bold text-3xl uppercase font-sans relative">
                 <span className="z-40 text-slate-500">jiel<span className="text-orange-600 uppercase">ko</span></span>
                 <span className="p-8 bg-yellow-300 absolute z-10 rounded-full"/>

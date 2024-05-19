@@ -1,4 +1,5 @@
 import random
+from pprint import pprint
 from time import sleep
 
 PEAGE_TAG = ["entrant", "sortant"]
@@ -14,14 +15,20 @@ PEAGE_CATEG = [
 # categ - label - price - tag - checkpoint - datetime - date - time - datetime_categ_label_price_tag
 
 while True:
-        print(random.choice(PEAGE_CATEG))
-        print(random.choice(PEAGE_TAG))
-        print(random.choice(PEAGE_CHECKPOINT))
-        sleep(1)
+        peage_categ = random.choice(PEAGE_CATEG)
+        peage_tag = random.choice(PEAGE_TAG)
+        peage_checkpoint = random.choice(PEAGE_CHECKPOINT)
         
+        #id = f"{peage_categ["categ"]} _ {peage_categ["label"]}_{peage_categ["price"]}_{peage_tag}"
         
-Catégorie de Véhicule	        Tronçon Diamniadio - AIBD
-C1, Moto	                500	1 000   400
-C2, Véhicule particulier	800	1 600   500
-C3, Camionnette	                1 200	2 400   800
-C4,C5 Car et Poids lourd	1 500	3 100   1000
+        pprint({
+                "id" : None,
+                "category" : peage_categ["categ"],
+                "label" : peage_categ["label"],
+                "price" : peage_categ["price"],
+                "checkpoint" : peage_checkpoint,
+                
+        })
+        
+        sleep(0.5)
+        
